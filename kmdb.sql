@@ -87,6 +87,7 @@
 -- The Dark Knight        2008           PG-13  Warner Bros.
 -- The Dark Knight Rises  2012           PG-13  Warner Bros.
 
+
 -- Top Cast
 -- ========
 
@@ -213,6 +214,10 @@ INSERT INTO roles (
 -- The SQL statement for the movies output
 -- TODO!
 
+SELECT movies.movie_title, movies.year_released, movies.mpaa_rating, studios.studio_name
+FROM movies
+INNER JOIN studios ON movies.studio_id = studios.id;
+
 -- Prints a header for the cast output
 .print ""
 .print "Top Cast"
@@ -222,3 +227,9 @@ INSERT INTO roles (
 
 -- The SQL statement for the cast output
 -- TODO!
+
+SELECT movies.movie_title, actors.actor_name, roles.character_name
+FROM roles
+INNER JOIN actors ON roles.actor_id = actors.id 
+INNER JOIN movies ON roles.movie_id = movies.id 
+LIMIT 15;
