@@ -1,7 +1,7 @@
 -- In this assignment, you'll be building the domain model, database 
 -- structure, and data for "KMDB" (the Kellogg Movie Database).
 -- The end product will be a report that prints the movies and the 
--- top-billed cast for each movie in the database.
+-- top-billed cast for each movie in the database.        
 
 -- Requirements/assumptions
 --
@@ -113,9 +113,39 @@
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
 
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS studios;
+DROP TABLE IF EXISTS actors;
+
+
 -- Create new tables, according to your domain model
 -- TODO!
 
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_title TEXT,
+    year_released TEXT,
+    mpaa_rating TEXT,
+    studio_id INTEGER --Fk to studios
+);
+
+CREATE TABLE studios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    studio_name TEXT
+);
+
+CREATE TABLE actors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT
+);
+
+CREATE TABLE roles (
+    role_id INTEGER PRIMARY KEY AUTOINCREMENT
+    movie_id INTEGER, --FK to movies
+    actor_id INTEGER, --FK to actors
+    character_name TEXT 
+);
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
